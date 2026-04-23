@@ -1,0 +1,9 @@
+{
+  "workspace": "accounting",
+  "route": "/admin/business/accounting",
+  "pageTitle": "Accounting Control Room",
+  "defaultRecordState": "draft",
+  "defaultApprovalState": "pending",
+  "defaultPostingState": "unposted",
+  "defaultFulfillmentState": "none"
+}

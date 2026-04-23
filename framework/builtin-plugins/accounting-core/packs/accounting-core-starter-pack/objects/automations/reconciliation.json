@@ -1,0 +1,12 @@
+{
+  "automationId": "accounting-core.reconciliation.default",
+  "trigger": "exception-record-opened",
+  "action": "accounting.reconciliation.run",
+  "queues": [
+    "period-close-blockers",
+    "bank-reconciliation-breaks",
+    "subledger-gl-mismatches",
+    "over-billing-review",
+    "stale-exchange-rates"
+  ]
+}

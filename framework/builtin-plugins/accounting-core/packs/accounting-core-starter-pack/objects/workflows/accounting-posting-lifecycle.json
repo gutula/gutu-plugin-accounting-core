@@ -1,0 +1,9 @@
+{
+  "workflowId": "accounting-posting-lifecycle",
+  "actors": [
+    "accountant",
+    "approver",
+    "controller"
+  ],
+  "description": "Review, approve, post, reverse, and close accounting documents."
+}

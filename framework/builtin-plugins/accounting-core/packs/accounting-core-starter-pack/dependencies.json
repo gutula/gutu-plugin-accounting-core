@@ -1,0 +1,19 @@
+{
+  "plugin": "accounting-core",
+  "requiredPlugins": [
+    "auth-core",
+    "org-tenant-core",
+    "role-policy-core",
+    "audit-core",
+    "workflow-core",
+    "party-relationships-core",
+    "pricing-tax-core",
+    "traceability-core"
+  ],
+  "requiredCapabilities": [
+    "ui.register.admin",
+    "api.rest.mount",
+    "data.write.accounting",
+    "events.publish.accounting"
+  ]
+}

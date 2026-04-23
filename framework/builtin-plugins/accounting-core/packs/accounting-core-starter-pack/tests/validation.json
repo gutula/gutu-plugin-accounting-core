@@ -1,0 +1,31 @@
+{
+  "packageId": "accounting-core",
+  "packName": "accounting-core-starter-pack",
+  "expectedActions": [
+    "accounting.billing.post",
+    "accounting.payments.allocate",
+    "accounting.periods.close"
+  ],
+  "expectedResources": [
+    "accounting.journals",
+    "accounting.billing",
+    "accounting.reconciliation"
+  ],
+  "expectedReports": [
+    "Trial Balance",
+    "General Ledger",
+    "Balance Sheet",
+    "Profit and Loss Statement",
+    "Accounts Receivable",
+    "Accounts Payable",
+    "Cash Flow",
+    "Bank Clearance Summary"
+  ],
+  "expectedExceptionQueues": [
+    "period-close-blockers",
+    "bank-reconciliation-breaks",
+    "subledger-gl-mismatches",
+    "over-billing-review",
+    "stale-exchange-rates"
+  ]
+}

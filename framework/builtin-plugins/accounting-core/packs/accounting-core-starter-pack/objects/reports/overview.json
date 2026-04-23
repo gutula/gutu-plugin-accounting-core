@@ -1,0 +1,27 @@
+{
+  "pluginId": "accounting-core",
+  "reports": [
+    "Trial Balance",
+    "General Ledger",
+    "Balance Sheet",
+    "Profit and Loss Statement",
+    "Accounts Receivable",
+    "Accounts Payable",
+    "Cash Flow",
+    "Bank Clearance Summary"
+  ],
+  "exceptionQueues": [
+    "period-close-blockers",
+    "bank-reconciliation-breaks",
+    "subledger-gl-mismatches",
+    "over-billing-review",
+    "stale-exchange-rates"
+  ],
+  "operationalScenarios": [
+    "invoice-to-payment",
+    "purchase-bill-to-payment",
+    "credit-note-reversal",
+    "bank-import-to-reconciliation",
+    "period-close"
+  ]
+}
