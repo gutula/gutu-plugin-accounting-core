@@ -26,7 +26,7 @@ General ledger, receivable, payable, billing, payment allocation, and close-orie
 
 Owns ledger-oriented financial truth, billing posture, and reconciliation state so every upstream plugin must request finance outcomes explicitly.
 
-- Exports 3 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`.
+- Exports 7 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`, `accounting.billing.hold`, `accounting.billing.release`, `accounting.billing.amend`, `accounting.billing.reverse`.
 - Owns 3 resource contracts: `accounting.journals`, `accounting.billing`, `accounting.reconciliation`.
 - Publishes 2 job definitions with explicit queue and retry policy metadata.
 - Publishes 1 workflow definition with state-machine descriptions and mandatory steps.
@@ -71,7 +71,7 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 
 | Surface | Count | Details |
 | --- | --- | --- |
-| Actions | 3 | `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close` |
+| Actions | 7 | `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`, `accounting.billing.hold`, `accounting.billing.release`, `accounting.billing.amend`, `accounting.billing.reverse` |
 | Resources | 3 | `accounting.journals`, `accounting.billing`, `accounting.reconciliation` |
 | Jobs | 2 | `accounting.projections.refresh`, `accounting.reconciliation.run` |
 | Workflows | 1 | `accounting-posting-lifecycle` |
@@ -96,10 +96,10 @@ bun run docs:check
 ```
 
 ```ts
-import { manifest, createPrimaryRecordAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/accounting-core";
+import { manifest, postBillingDocumentAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/accounting-core";
 
 console.log(manifest.id);
-console.log(createPrimaryRecordAction.id);
+console.log(postBillingDocumentAction.id);
 console.log(BusinessPrimaryResource.id);
 ```
 

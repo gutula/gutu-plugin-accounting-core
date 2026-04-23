@@ -2,21 +2,29 @@ import { defineAction } from "@platform/schema";
 import { z } from "zod";
 
 import {
-  advancePrimaryRecord,
   createPrimaryRecord,
-  reconcilePrimaryRecord
+  advancePrimaryRecord,
+  reconcilePrimaryRecord,
+  placePrimaryRecordOnHold,
+  releasePrimaryRecordHold,
+  amendPrimaryRecord,
+  reversePrimaryRecord
 } from "../services/main.service";
 import {
-  advancePrimaryRecordInputSchema,
-  createPrimaryRecordInputSchema,
-  reconcilePrimaryRecordInputSchema,
   approvalStateSchema,
   fulfillmentStateSchema,
   postingStateSchema,
-  recordStateSchema
+  recordStateSchema,
+  createPrimaryRecordInputSchema,
+  advancePrimaryRecordInputSchema,
+  reconcilePrimaryRecordInputSchema,
+  placePrimaryRecordOnHoldInputSchema,
+  releasePrimaryRecordHoldInputSchema,
+  amendPrimaryRecordInputSchema,
+  reversePrimaryRecordInputSchema
 } from "../model";
 
-export const createPrimaryRecordAction = defineAction({
+export const postBillingDocumentAction = defineAction({
   id: "accounting.billing.post",
   description: "Post Billing Document",
   input: createPrimaryRecordInputSchema,
@@ -37,7 +45,7 @@ export const createPrimaryRecordAction = defineAction({
   handler: ({ input }) => createPrimaryRecord(input)
 });
 
-export const advancePrimaryRecordAction = defineAction({
+export const allocatePaymentAction = defineAction({
   id: "accounting.payments.allocate",
   description: "Allocate Payment",
   input: advancePrimaryRecordInputSchema,
@@ -58,7 +66,7 @@ export const advancePrimaryRecordAction = defineAction({
   handler: ({ input }) => advancePrimaryRecord(input)
 });
 
-export const reconcilePrimaryRecordAction = defineAction({
+export const closeAccountingPeriodAction = defineAction({
   id: "accounting.periods.close",
   description: "Close Accounting Period",
   input: reconcilePrimaryRecordInputSchema,
@@ -77,8 +85,84 @@ export const reconcilePrimaryRecordAction = defineAction({
   handler: ({ input }) => reconcilePrimaryRecord(input)
 });
 
+export const placeRecordOnHoldAction = defineAction({
+  id: "accounting.billing.hold",
+  description: "Place Record On Hold",
+  input: placePrimaryRecordOnHoldInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    status: z.enum(["open", "under-review", "resolved", "closed"]),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "accounting.billing.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => placePrimaryRecordOnHold(input)
+});
+
+export const releaseRecordHoldAction = defineAction({
+  id: "accounting.billing.release",
+  description: "Release Record Hold",
+  input: releasePrimaryRecordHoldInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    status: z.enum(["open", "under-review", "resolved", "closed"]),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "accounting.billing.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => releasePrimaryRecordHold(input)
+});
+
+export const amendRecordAction = defineAction({
+  id: "accounting.billing.amend",
+  description: "Amend Record",
+  input: amendPrimaryRecordInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    amendedRecordId: z.string(),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "accounting.billing.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => amendPrimaryRecord(input)
+});
+
+export const reverseRecordAction = defineAction({
+  id: "accounting.billing.reverse",
+  description: "Reverse Record",
+  input: reversePrimaryRecordInputSchema,
+  output: z.object({
+    ok: z.literal(true),
+    recordId: z.string(),
+    reversalRecordId: z.string(),
+    revisionNo: z.number().int().positive(),
+    eventIds: z.array(z.string()),
+    jobIds: z.array(z.string())
+  }),
+  permission: "accounting.billing.write",
+  idempotent: false,
+  audit: true,
+  handler: ({ input }) => reversePrimaryRecord(input)
+});
+
 export const businessActions = [
-  createPrimaryRecordAction,
-  advancePrimaryRecordAction,
-  reconcilePrimaryRecordAction
+  postBillingDocumentAction,
+  allocatePaymentAction,
+  closeAccountingPeriodAction,
+  placeRecordOnHoldAction,
+  releaseRecordHoldAction,
+  amendRecordAction,
+  reverseRecordAction
 ] as const;

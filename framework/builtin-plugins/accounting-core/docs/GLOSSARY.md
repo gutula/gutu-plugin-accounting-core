@@ -9,6 +9,10 @@
 | accounting.billing.post | Post Billing Document |
 | accounting.payments.allocate | Allocate Payment |
 | accounting.periods.close | Close Accounting Period |
+| accounting.billing.hold | Place Record On Hold |
+| accounting.billing.release | Release Record Hold |
+| accounting.billing.amend | Amend Record |
+| accounting.billing.reverse | Reverse Record |
 | accounting.projections.refresh | Job definition queued on `accounting-projections`. |
 | accounting.reconciliation.run | Job definition queued on `accounting-reconciliation`. |
 | accounting-posting-lifecycle | Review, approve, post, reverse, and close accounting documents. |

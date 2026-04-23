@@ -91,7 +91,11 @@ export default definePackage({
   "publicCommands": [
     "accounting.billing.post",
     "accounting.payments.allocate",
-    "accounting.periods.close"
+    "accounting.periods.close",
+    "accounting.billing.hold",
+    "accounting.billing.release",
+    "accounting.billing.amend",
+    "accounting.billing.reverse"
   ],
   "publicQueries": [
     "accounting.trial-balance",

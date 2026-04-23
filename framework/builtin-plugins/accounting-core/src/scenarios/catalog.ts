@@ -6,7 +6,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "accounting.billing.post",
       "accounting.payments.allocate",
-      "accounting.periods.close"
+      "accounting.periods.close",
+      "accounting.billing.hold",
+      "accounting.billing.release",
+      "accounting.billing.amend",
+      "accounting.billing.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -25,7 +29,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "accounting.billing.post",
       "accounting.payments.allocate",
-      "accounting.periods.close"
+      "accounting.periods.close",
+      "accounting.billing.hold",
+      "accounting.billing.release",
+      "accounting.billing.amend",
+      "accounting.billing.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -44,7 +52,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "accounting.billing.post",
       "accounting.payments.allocate",
-      "accounting.periods.close"
+      "accounting.periods.close",
+      "accounting.billing.hold",
+      "accounting.billing.release",
+      "accounting.billing.amend",
+      "accounting.billing.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -63,7 +75,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "accounting.billing.post",
       "accounting.payments.allocate",
-      "accounting.periods.close"
+      "accounting.periods.close",
+      "accounting.billing.hold",
+      "accounting.billing.release",
+      "accounting.billing.amend",
+      "accounting.billing.reverse"
     ],
     "downstreamTargets": {
       "create": [],
@@ -82,7 +98,11 @@ export const scenarioDefinitions = [
     "actionIds": [
       "accounting.billing.post",
       "accounting.payments.allocate",
-      "accounting.periods.close"
+      "accounting.periods.close",
+      "accounting.billing.hold",
+      "accounting.billing.release",
+      "accounting.billing.amend",
+      "accounting.billing.reverse"
     ],
     "downstreamTargets": {
       "create": [],

@@ -4,7 +4,7 @@
 
 ## Shipped Now
 
-- Exports 3 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`.
+- Exports 7 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`, `accounting.billing.hold`, `accounting.billing.release`, `accounting.billing.amend`, `accounting.billing.reverse`.
 - Owns 3 resource contracts: `accounting.journals`, `accounting.billing`, `accounting.reconciliation`.
 - Publishes 2 job definitions with explicit queue and retry policy metadata.
 - Publishes 1 workflow definition with state-machine descriptions and mandatory steps.
@@ -18,7 +18,7 @@
 
 ## Current Gaps
 
-- Repo-local documentation verification entrypoints were missing before this pass and need to stay green as the repo evolves.
+- No additional gaps were identified beyond the plugin’s stated non-goals.
 
 ## Recommended Next
 

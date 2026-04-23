@@ -71,6 +71,10 @@ Owns ledger-oriented financial truth, billing posture, and reconciliation state 
 | Action | `accounting.billing.post` | Permission: `accounting.billing.write` | Post Billing Document<br>Idempotent<br>Audited |
 | Action | `accounting.payments.allocate` | Permission: `accounting.payments.write` | Allocate Payment<br>Non-idempotent<br>Audited |
 | Action | `accounting.periods.close` | Permission: `accounting.periods.close` | Close Accounting Period<br>Non-idempotent<br>Audited |
+| Action | `accounting.billing.hold` | Permission: `accounting.billing.write` | Place Record On Hold<br>Non-idempotent<br>Audited |
+| Action | `accounting.billing.release` | Permission: `accounting.billing.write` | Release Record Hold<br>Non-idempotent<br>Audited |
+| Action | `accounting.billing.amend` | Permission: `accounting.billing.write` | Amend Record<br>Non-idempotent<br>Audited |
+| Action | `accounting.billing.reverse` | Permission: `accounting.billing.write` | Reverse Record<br>Non-idempotent<br>Audited |
 | Resource | `accounting.journals` | Portal disabled | Journal batches, posting states, and append-only accounting headers.<br>Purpose: Keep financial truth inside the accounting boundary instead of allowing raw cross-plugin ledger writes.<br>Admin auto-CRUD enabled<br>Fields: `title`, `recordState`, `approvalState`, `postingState`, `fulfillmentState`, `updatedAt` |
 | Resource | `accounting.billing` | Portal disabled | Billing documents, allocations, and receivable or payable lifecycle state.<br>Purpose: Translate validated upstream intents into receivable and payable truth.<br>Admin auto-CRUD enabled<br>Fields: `label`, `status`, `requestedAction`, `updatedAt` |
 | Resource | `accounting.reconciliation` | Portal disabled | Subledger, bank, and period-close reconciliation queues.<br>Purpose: Surface financial drift, posting delays, and operator repair work explicitly.<br>Admin auto-CRUD enabled<br>Fields: `severity`, `status`, `reasonCode`, `updatedAt` |
@@ -156,11 +160,11 @@ stateDiagram-v2
 ### 1. Host wiring
 
 ```ts
-import { manifest, createPrimaryRecordAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/accounting-core";
+import { manifest, postBillingDocumentAction, BusinessPrimaryResource, jobDefinitions, workflowDefinitions, adminContributions, uiSurface } from "@plugins/accounting-core";
 
 export const pluginSurface = {
   manifest,
-  createPrimaryRecordAction,
+  postBillingDocumentAction,
   BusinessPrimaryResource,
   jobDefinitions,
   workflowDefinitions,
@@ -174,10 +178,10 @@ Use this pattern when your host needs to register the plugin’s declared export
 ### 2. Action-first orchestration
 
 ```ts
-import { manifest, createPrimaryRecordAction } from "@plugins/accounting-core";
+import { manifest, postBillingDocumentAction } from "@plugins/accounting-core";
 
 console.log("plugin", manifest.id);
-console.log("action", createPrimaryRecordAction.id);
+console.log("action", postBillingDocumentAction.id);
 ```
 
 - Prefer action IDs as the stable integration boundary.
@@ -219,7 +223,7 @@ console.log("action", createPrimaryRecordAction.id);
 
 ### Current truth
 
-- Exports 3 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`.
+- Exports 7 governed actions: `accounting.billing.post`, `accounting.payments.allocate`, `accounting.periods.close`, `accounting.billing.hold`, `accounting.billing.release`, `accounting.billing.amend`, `accounting.billing.reverse`.
 - Owns 3 resource contracts: `accounting.journals`, `accounting.billing`, `accounting.reconciliation`.
 - Publishes 2 job definitions with explicit queue and retry policy metadata.
 - Publishes 1 workflow definition with state-machine descriptions and mandatory steps.
@@ -233,7 +237,7 @@ console.log("action", createPrimaryRecordAction.id);
 
 ### Current gaps
 
-- Repo-local documentation verification entrypoints were missing before this pass and need to stay green as the repo evolves.
+- No extra gaps were discovered beyond the plugin’s declared boundaries.
 
 ### Recommended next
 
