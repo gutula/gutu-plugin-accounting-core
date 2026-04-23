@@ -66,9 +66,78 @@ export default definePackage({
       "packageId": "traceability-core",
       "class": "required",
       "rationale": "Required for Accounting Core to keep its boundary governed and explicit."
+    },
+    {
+      "packageId": "treasury-core",
+      "class": "optional",
+      "rationale": "Recommended with Accounting Core for smoother production adoption and operator experience."
+    },
+    {
+      "packageId": "sales-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves Accounting Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "procurement-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves Accounting Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "assets-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves Accounting Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "hr-payroll-core",
+      "class": "capability-enhancing",
+      "rationale": "Improves Accounting Core with deeper downstream automation, visibility, or workflow coverage."
+    },
+    {
+      "packageId": "e-invoicing-core",
+      "class": "integration-only",
+      "rationale": "Only needed when Accounting Core must exchange data or actions with adjacent or external surfaces."
+    },
+    {
+      "packageId": "analytics-bi-core",
+      "class": "integration-only",
+      "rationale": "Only needed when Accounting Core must exchange data or actions with adjacent or external surfaces."
     }
   ],
-  "optionalWith": [],
+  "recommendedPlugins": [
+    "treasury-core"
+  ],
+  "capabilityEnhancingPlugins": [
+    "sales-core",
+    "procurement-core",
+    "assets-core",
+    "hr-payroll-core"
+  ],
+  "integrationOnlyPlugins": [
+    "e-invoicing-core",
+    "analytics-bi-core"
+  ],
+  "suggestedPacks": [
+    "localization-global-base",
+    "localization-india",
+    "localization-united-states",
+    "sector-ecommerce",
+    "sector-education",
+    "sector-epc-professional-delivery",
+    "sector-financial-services-compliance",
+    "sector-healthcare",
+    "sector-manufacturing",
+    "sector-nonprofit",
+    "sector-professional-services",
+    "sector-retail",
+    "sector-trading-distribution"
+  ],
+  "standaloneSupported": true,
+  "installNotes": [
+    "Can run standalone, but real operational value increases once commercial, treasury, and statutory plugins are composed."
+  ],
+  "optionalWith": [
+    "treasury-core"
+  ],
   "conflictsWith": [],
   "providesCapabilities": [
     "accounting.journals",

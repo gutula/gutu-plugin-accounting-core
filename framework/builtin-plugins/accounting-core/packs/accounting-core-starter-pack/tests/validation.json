@@ -1,6 +1,44 @@
 {
   "packageId": "accounting-core",
   "packName": "accounting-core-starter-pack",
+  "requiredPlugins": [
+    "auth-core",
+    "org-tenant-core",
+    "role-policy-core",
+    "audit-core",
+    "workflow-core",
+    "party-relationships-core",
+    "pricing-tax-core",
+    "traceability-core"
+  ],
+  "recommendedPlugins": [
+    "treasury-core"
+  ],
+  "capabilityEnhancingPlugins": [
+    "sales-core",
+    "procurement-core",
+    "assets-core",
+    "hr-payroll-core"
+  ],
+  "integrationOnlyPlugins": [
+    "e-invoicing-core",
+    "analytics-bi-core"
+  ],
+  "suggestedPacks": [
+    "localization-global-base",
+    "localization-india",
+    "localization-united-states",
+    "sector-ecommerce",
+    "sector-education",
+    "sector-epc-professional-delivery",
+    "sector-financial-services-compliance",
+    "sector-healthcare",
+    "sector-manufacturing",
+    "sector-nonprofit",
+    "sector-professional-services",
+    "sector-retail",
+    "sector-trading-distribution"
+  ],
   "expectedActions": [
     "accounting.billing.post",
     "accounting.payments.allocate",

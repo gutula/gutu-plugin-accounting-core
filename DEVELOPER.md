@@ -54,6 +54,11 @@ Owns ledger-oriented financial truth, billing posture, and reconciliation state 
 | Field | Value |
 | --- | --- |
 | Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `party-relationships-core`, `pricing-tax-core`, `traceability-core` |
+| Recommended Plugins | None |
+| Capability Enhancing | None |
+| Integration Only | None |
+| Suggested Packs | None |
+| Standalone Supported | Yes |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.accounting`, `events.publish.accounting` |
 | Provides Capabilities | `accounting.journals`, `accounting.billing`, `accounting.reconciliation` |
 | Owns Data | `accounting.journals`, `accounting.billing`, `accounting.allocations`, `accounting.reconciliation` |
