@@ -54,10 +54,10 @@ Owns ledger-oriented financial truth, billing posture, and reconciliation state 
 | Field | Value |
 | --- | --- |
 | Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `party-relationships-core`, `pricing-tax-core`, `traceability-core` |
-| Recommended Plugins | None |
-| Capability Enhancing | None |
-| Integration Only | None |
-| Suggested Packs | None |
+| Recommended Plugins | `treasury-core` |
+| Capability Enhancing | `sales-core`, `procurement-core`, `assets-core`, `hr-payroll-core` |
+| Integration Only | `e-invoicing-core`, `analytics-bi-core` |
+| Suggested Packs | `localization-global-base`, `localization-india`, `localization-united-states`, `sector-ecommerce`, `sector-education`, `sector-epc-professional-delivery`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-manufacturing`, `sector-nonprofit`, `sector-professional-services`, `sector-retail`, `sector-trading-distribution` |
 | Standalone Supported | Yes |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.accounting`, `events.publish.accounting` |
 | Provides Capabilities | `accounting.journals`, `accounting.billing`, `accounting.reconciliation` |

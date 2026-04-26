@@ -61,10 +61,10 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 | Manifest ID | `accounting-core` |
 | Repo | [gutu-plugin-accounting-core](https://github.com/gutula/gutu-plugin-accounting-core) |
 | Depends On | `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `party-relationships-core`, `pricing-tax-core`, `traceability-core` |
-| Recommended Plugins | None |
-| Capability Enhancing | None |
-| Integration Only | None |
-| Suggested Packs | None |
+| Recommended Plugins | `treasury-core` |
+| Capability Enhancing | `sales-core`, `procurement-core`, `assets-core`, `hr-payroll-core` |
+| Integration Only | `e-invoicing-core`, `analytics-bi-core` |
+| Suggested Packs | `localization-global-base`, `localization-india`, `localization-united-states`, `sector-ecommerce`, `sector-education`, `sector-epc-professional-delivery`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-manufacturing`, `sector-nonprofit`, `sector-professional-services`, `sector-retail`, `sector-trading-distribution` |
 | Standalone Supported | Yes |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.accounting`, `events.publish.accounting` |
 | Provided Capabilities | `accounting.journals`, `accounting.billing`, `accounting.reconciliation` |
@@ -75,12 +75,12 @@ This tier is justified because unit coverage exists, contract coverage exists, i
 ## Installation Guidance
 
 - Required plugins: `auth-core`, `org-tenant-core`, `role-policy-core`, `audit-core`, `workflow-core`, `party-relationships-core`, `pricing-tax-core`, `traceability-core`
-- Recommended plugins: none
-- Capability-enhancing plugins: none
-- Integration-only plugins: none
-- Suggested packs: none
+- Recommended plugins: `treasury-core`
+- Capability-enhancing plugins: `sales-core`, `procurement-core`, `assets-core`, `hr-payroll-core`
+- Integration-only plugins: `e-invoicing-core`, `analytics-bi-core`
+- Suggested packs: `localization-global-base`, `localization-india`, `localization-united-states`, `sector-ecommerce`, `sector-education`, `sector-epc-professional-delivery`, `sector-financial-services-compliance`, `sector-healthcare`, `sector-manufacturing`, `sector-nonprofit`, `sector-professional-services`, `sector-retail`, `sector-trading-distribution`
 - Standalone supported: yes
-
+- Can run standalone, but real operational value increases once commercial, treasury, and statutory plugins are composed.
 
 ## Capability Matrix
 
